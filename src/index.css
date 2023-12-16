@@ -24,24 +24,72 @@ li {
 
 li {
   line-height: 2rem;
-  padding: 1rem 0;
+  padding: 1rem 0.3rem;
+}
+
+li .task {
+  border: 1px solid transparent;
+  border-radius: 5px;
+  padding: 0.3rem;
+  transition: 0.4s;
+}
+
+li .task:hover,
+li .task:active {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 button {
   border: 0;
+  background-color: transparent;
   border-radius: 5px;
-  box-shadow: 4px 4px 9px 0px rgba(0, 0, 0, 0.2);
-  padding: 1rem;
+  border: 1px solid transparent;
   transition: 0.4s;
-  background-color: rgb(200, 255, 204);
 }
 
-button:hover {
+button.submit {
+  margin-top: 20px;
+  box-shadow: 4px 4px 9px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgb(200, 255, 204);
+  padding: 1rem;
+  width: 100%;
+  max-width: 300px;
+  align-self: center;
+}
+
+button.delete {
+  color: red;
+  margin-right: 1rem;
+  padding: 0.3rem;
+  cursor: pointer;
+}
+
+button.submit:hover {
   background-color: rgb(121, 250, 131);
 }
 
-button:active {
+button.delete:hover {
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+button.submit:active {
   box-shadow: none;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  padding: 1rem;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 400px;
 }
 
 .complete {
