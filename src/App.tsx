@@ -6,7 +6,7 @@ function App() {
       <h1>Todo App</h1>
       <section>
         <h2>Tasks</h2>
-        <ul>
+        <ul className='task__list'>
           <li className="task__container">
             <button className="delete">X</button><span className="task">One</span>
           </li>
