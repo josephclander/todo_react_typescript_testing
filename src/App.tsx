@@ -1,5 +1,5 @@
 import './App.css';
-import { TaskList } from './components/TaskList';
+import { Form } from './components/Form';
 
 function App() {
   return (
@@ -7,16 +7,7 @@ function App() {
       <h1>Todo App</h1>
       <section>
         <h2>Tasks</h2>
-        <form>
-          <TaskList />
-          <input
-            type="text"
-            name="task__input"
-            id="task__input"
-            className="task__input"
-          />
-          <input className="submit" type="submit" value="Add Task" />
-        </form>
+        <Form />
       </section>
     </main>
   );
