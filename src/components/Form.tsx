@@ -8,7 +8,8 @@ export const Form = () => {
 
   return (
     <form>
-      <TaskList tasks={mockTasks} />
+      <TaskList tasks={[]} />
+      <label htmlFor="task__input">Task Input</label>
       <input
         type="text"
         name="task__input"
