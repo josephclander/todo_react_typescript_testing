@@ -1,5 +1,5 @@
 import { Form } from '../components/Form';
-import { render, screen, cleanup } from '@testing-library/react';
+import { fireEvent, render, screen, cleanup } from '@testing-library/react';
 import '@testing-library/jest-dom';
 
 describe('Renders a form correctly', () => {
@@ -10,4 +10,11 @@ describe('Renders a form correctly', () => {
       screen.getByRole('textbox', { name: 'Task Input' })
     ).toBeInTheDocument();
   });
+  it('updates input field on user input', () => {
+    render(<Form />);
+    const input = screen.getByRole('textbox', { name: 'Task Input' }) as HTMLInputElement;
+    fireEvent.change(input, { target: { value: 'New Task' } });
+    expect(input.value).toBe('New Task');
+  });
 });
+
