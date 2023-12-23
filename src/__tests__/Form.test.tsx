@@ -26,4 +26,22 @@ describe("Renders a form correctly", () => {
     fireEvent.click(submitButton);
     expect(screen.getByText("New Task")).toBeInTheDocument();
   });
+  it("does not submit an empty task", () => {
+    render(<Form />);
+    const input = screen.getByRole("textbox", { name: "Task Input" });
+    const submitButton = screen.getByRole("button", { name: "Add Task" });
+    fireEvent.change(input, { target: { value: " " } });
+    fireEvent.click(submitButton);
+    expect(screen.queryByText(" ")).not.toBeInTheDocument();
+  });
+  it("clears the input after submission", () => {
+    render(<Form />);
+    const input = screen.getByRole("textbox", {
+      name: "Task Input",
+    }) as HTMLInputElement;
+    const submitButton = screen.getByRole("button", { name: "Add Task" });
+    fireEvent.change(input, { target: { value: "Clear this field" } });
+    fireEvent.click(submitButton);
+    expect(input.value).toBe("");
+  });
 });
