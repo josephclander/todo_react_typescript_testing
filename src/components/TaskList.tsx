@@ -1,6 +1,6 @@
-import { Task, TaskProps } from './Task';
+import { Task, TaskProps } from "./Task";
 
-export type TaskListProps = {
+type TaskListProps = {
   tasks: TaskProps[];
 };
 
