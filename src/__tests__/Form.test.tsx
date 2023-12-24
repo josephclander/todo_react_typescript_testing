@@ -63,4 +63,24 @@ describe("Renders a form correctly", () => {
     fireEvent.click(taskElement);
     expect(mockToggleComplete).toHaveBeenCalledWith("1");
   });
+  it("removes a task from the list if clicked", () => {
+    render(<Form />);
+    const input = screen.getByLabelText("Task Input");
+
+    // Add a task
+    fireEvent.change(input, { target: { value: "Book flights" } });
+    fireEvent.submit(screen.getByText("Add Task"));
+
+    // Add another task
+    fireEvent.change(input, { target: { value: "Clean kitchen" } });
+    fireEvent.submit(screen.getByText("Add Task"));
+
+    // Now delete the first task
+    const deleteButtons = screen.queryAllByText("X");
+    fireEvent.click(deleteButtons[0]); // click the first x button
+
+    // Check if the task list does not contain the deleted task only
+    expect(screen.queryByText("Book flights")).toBeNull();
+    expect(screen.queryByText("Clean kitchen")).toBeInTheDocument();
+  });
 });
