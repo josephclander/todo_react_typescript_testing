@@ -1,7 +1,7 @@
 // TaskList.tsx
 import { Task, TaskProps } from "./Task";
 
-export type TaskListProps = {
+type TaskListProps = {
   tasks: TaskProps[];
   onToggleComplete: (id: string) => void;
 };
