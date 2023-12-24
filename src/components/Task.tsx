@@ -24,7 +24,7 @@ export const Task = ({
 
   return (
     <li className="task__container">
-      <button onClick={handleDelete} className="delete">
+      <button type="button" onClick={handleDelete} className="delete">
         X
       </button>
       <span tabIndex={0} onClick={handleToggle} className={`task ${completeStyle}`}>
