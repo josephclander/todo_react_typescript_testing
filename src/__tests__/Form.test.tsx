@@ -1,4 +1,5 @@
 import { Form } from "../components/Form";
+import { Task } from "../components/Task";
 import { fireEvent, render, screen, cleanup } from "@testing-library/react";
 import "@testing-library/jest-dom";
 
@@ -43,5 +44,24 @@ describe("Renders a form correctly", () => {
     fireEvent.change(input, { target: { value: "Clear this field" } });
     fireEvent.click(submitButton);
     expect(input.value).toBe("");
+  });
+  it("click a task toggles complete", () => {
+    const mockToggleComplete = vi.fn();
+    const mockTask = {
+      id: "1",
+      task: "Book flights",
+      complete: false,
+      onToggleComplete: mockToggleComplete,
+    };
+    render(<Task {...mockTask} />);
+
+    const taskElement = screen.getByText("Book flights");
+    expect(taskElement).not.toHaveClass("complete");
+
+    // Simulate click
+    fireEvent.click(taskElement);
+
+    // Expect the mock function to have been called
+    expect(mockToggleComplete).toHaveBeenCalledWith("1");
   });
 });

@@ -1,12 +1,14 @@
+// TaskList.tsx
 import { Task, TaskProps } from "./Task";
 
-type TaskListProps = {
+export type TaskListProps = {
   tasks: TaskProps[];
+  onToggleComplete: (id: string) => void;
 };
 
-export const TaskList = ({ tasks }: TaskListProps) => {
-  const items = tasks.map((taskData) => (
-    <Task key={taskData.id} {...taskData} />
+export const TaskList = ({ tasks, onToggleComplete }: TaskListProps) => {
+  const items = tasks.map((task) => (
+    <Task key={task.id} {...task} onToggleComplete={onToggleComplete} />
   ));
   return <ul className="task__list">{items}</ul>;
 };

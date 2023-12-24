@@ -1,3 +1,4 @@
+// Form.tsx
 import { ChangeEvent, FormEvent, useState } from "react";
 import { TaskList } from "./TaskList";
 import { TaskProps } from "./Task";
@@ -14,7 +15,7 @@ export const Form = () => {
     event.preventDefault();
     if (!input.trim()) return; // Prevent adding empty tasks
 
-    const newTask: TaskProps = {
+    const newTask = {
       id: generateUUID(),
       task: input,
       complete: false,
@@ -24,9 +25,16 @@ export const Form = () => {
     setInput("");
   };
 
+  const handleComplete = (id: string) => {
+    const updatedTasks = tasks.map((task) =>
+      task.id === id ? { ...task, complete: !task.complete } : task
+    );
+    setTasks(updatedTasks);
+  };
+
   return (
     <form onSubmit={handleAddTask}>
-      <TaskList tasks={tasks} />
+      <TaskList tasks={tasks} onToggleComplete={handleComplete} />
       <label htmlFor="task__input">Task Input</label>
       <input
         type="text"
