@@ -4,6 +4,8 @@ export type TaskProps = {
   complete: boolean;
 };
 
+
+
 export const Task = ({ task, complete }: TaskProps) => {
   const completeStyle = complete ? 'complete' : '';
   return (

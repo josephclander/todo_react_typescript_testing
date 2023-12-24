@@ -6,7 +6,7 @@ describe('Renders a task correctly', () => {
     cleanup();
   });
   it('render the text given in props', () => {
-    const mockTask = { id: 1, task: 'Complete homework', complete: false };
+    const mockTask = { id: '1', task: 'Complete homework', complete: false };
     render(
       <Task
         id={mockTask.id}
@@ -17,7 +17,7 @@ describe('Renders a task correctly', () => {
     expect(screen.getByText(mockTask.task)).not.toBeNull();
   });
   it('An incomplete task does not include "complete" in className list', () => {
-    const mockTask1 = { id: 1, task: 'Complete homework', complete: false };
+    const mockTask1 = { id: '1', task: 'Complete homework', complete: false };
     render(
       <Task
         id={mockTask1.id}
@@ -30,7 +30,7 @@ describe('Renders a task correctly', () => {
     expect(task1Element.className.includes('complete')).toBe(false);
   });
   it('A complete task includes "complete" in className list', () => {
-    const mockTask2 = { id: 1, task: 'Clean the house', complete: true };
+    const mockTask2 = { id: '1', task: 'Clean the house', complete: true };
     render(
       <Task
         id={mockTask2.id}

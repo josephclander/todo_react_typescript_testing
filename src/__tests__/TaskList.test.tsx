@@ -15,15 +15,15 @@ describe('Renders a task list correctly', () => {
   });
 
   it('should renders one Task component when there is one task', () => {
-    const mockTaskList1 = [{ id: 1, task: 'Complete homework', complete: false }];
+    const mockTaskList1 = [{ id: '1', task: 'Complete homework', complete: false }];
     render(<TaskList tasks={mockTaskList1} />);
     const taskItems = screen.queryAllByRole('listitem');
     expect(taskItems.length).toBe(1);
   });
   it('should renders two Task components when there are two tasks', () => {
     const mockTaskList2 = [
-        { id: 1, task: 'Complete homework', complete: false },
-        { id: 2, task: 'Clean the house', complete: true },
+        { id: '1', task: 'Complete homework', complete: false },
+        { id: '2', task: 'Clean the house', complete: true },
     ];
     render(<TaskList tasks={mockTaskList2} />);
     const taskItems = screen.queryAllByRole('listitem');
