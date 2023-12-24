@@ -32,9 +32,14 @@ export const Form = () => {
     setTasks(updatedTasks);
   };
 
+  const handleDelete = (id: string) => {
+    const filteredTasks = tasks.filter((task) => task.id !== id);
+    setTasks(filteredTasks);
+  };
+
   return (
     <form onSubmit={handleAddTask}>
-      <TaskList tasks={tasks} onToggleComplete={handleComplete} />
+      <TaskList tasks={tasks} onToggleComplete={handleComplete} onDelete={handleDelete} />
       <label htmlFor="task__input">Task Input</label>
       <input
         type="text"

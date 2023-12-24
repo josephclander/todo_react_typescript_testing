@@ -7,16 +7,26 @@ export type TaskProps = {
 
 type TaskComponentProps = TaskProps & {
   onToggleComplete: (id: string) => void;
+  onDelete: (id: string) => void;
 };
 
-export const Task = ({ id, task, complete, onToggleComplete }: TaskComponentProps) => {
+export const Task = ({
+  id,
+  task,
+  complete,
+  onToggleComplete,
+  onDelete,
+}: TaskComponentProps) => {
   const handleToggle = () => onToggleComplete(id);
+  const handleDelete = () => onDelete(id);
 
   const completeStyle = complete ? "complete" : "";
 
   return (
     <li className="task__container">
-      <button className="delete">X</button>
+      <button onClick={handleDelete} className="delete">
+        X
+      </button>
       <span onClick={handleToggle} className={`task ${completeStyle}`}>
         {task}
       </span>
