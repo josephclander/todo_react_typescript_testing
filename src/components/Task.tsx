@@ -27,7 +27,7 @@ export const Task = ({
       <button onClick={handleDelete} className="delete">
         X
       </button>
-      <span onClick={handleToggle} className={`task ${completeStyle}`}>
+      <span tabIndex={0} onClick={handleToggle} className={`task ${completeStyle}`}>
         {task}
       </span>
     </li>

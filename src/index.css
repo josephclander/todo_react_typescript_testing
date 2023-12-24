@@ -101,3 +101,7 @@ section, form {
   border-radius: 5px;
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
+
+.task__input:focus {
+  border: 1px solid blue;
+}

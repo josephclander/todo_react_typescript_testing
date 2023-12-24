@@ -1,11 +1,12 @@
 // Form.tsx
-import { ChangeEvent, FormEvent, useState } from "react";
+import { ChangeEvent, FormEvent, useState, useRef } from "react";
 import { TaskList } from "./TaskList";
 import { TaskProps } from "./Task";
 
 export const Form = () => {
   const [input, setInput] = useState<string>("");
   const [tasks, setTasks] = useState<TaskProps[]>([]);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     setInput(event.target.value);
@@ -23,6 +24,7 @@ export const Form = () => {
 
     setTasks([...tasks, newTask]);
     setInput("");
+    inputRef.current?.focus(); // bring focus back to the input
   };
 
   const handleComplete = (id: string) => {
@@ -39,7 +41,11 @@ export const Form = () => {
 
   return (
     <form onSubmit={handleAddTask}>
-      <TaskList tasks={tasks} onToggleComplete={handleComplete} onDelete={handleDelete} />
+      <TaskList
+        tasks={tasks}
+        onToggleComplete={handleComplete}
+        onDelete={handleDelete}
+      />
       <label htmlFor="task__input">Task Input</label>
       <input
         type="text"
@@ -49,7 +55,7 @@ export const Form = () => {
         value={input}
         onChange={handleInput}
       />
-      <input className="submit" type="submit" value="Add Task" />
+      <input ref={inputRef} className="submit" type="submit" value="Add Task" />
     </form>
   );
 };
