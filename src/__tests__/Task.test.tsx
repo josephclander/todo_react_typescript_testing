@@ -8,12 +8,14 @@ describe("Renders a task correctly", () => {
   it("render the text given in props", () => {
     const mockTask = { id: "1", task: "Complete homework", complete: false };
     const mockToggleComplete = vi.fn();
+    const mockOnDelete = vi.fn();
     render(
       <Task
         id={mockTask.id}
         task={mockTask.task}
         complete={mockTask.complete}
         onToggleComplete={mockToggleComplete}
+        onDelete={mockOnDelete}
       />
     );
     expect(screen.getByText(mockTask.task)).not.toBeNull();
@@ -21,12 +23,14 @@ describe("Renders a task correctly", () => {
   it('An incomplete task does not include "complete" in className list', () => {
     const mockTask1 = { id: "1", task: "Complete homework", complete: false };
     const mockToggleComplete = vi.fn();
+    const mockOnDelete = vi.fn();
     render(
       <Task
         id={mockTask1.id}
         task={mockTask1.task}
         complete={mockTask1.complete}
         onToggleComplete={mockToggleComplete}
+        onDelete={mockOnDelete}
       />
     );
     const task1Element = screen.getByText(mockTask1.task);
@@ -36,12 +40,14 @@ describe("Renders a task correctly", () => {
   it('A complete task includes "complete" in className list', () => {
     const mockTask2 = { id: "1", task: "Clean the house", complete: true };
     const mockToggleComplete = vi.fn();
+    const mockOnDelete = vi.fn();
     render(
       <Task
         id={mockTask2.id}
         task={mockTask2.task}
         complete={mockTask2.complete}
         onToggleComplete={mockToggleComplete}
+        onDelete={mockOnDelete}
       />
     );
     const task2Element = screen.getByText(mockTask2.task);
