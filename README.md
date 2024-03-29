@@ -1,6 +1,6 @@
 # Todo App
 
-The standard Todo App. Completed with TypeScript, React & Tested with React Testing Library
+The standard Todo App. Completed with TypeScript, React & Tested with React Testing Library.
 
 ## Screenshots
 
